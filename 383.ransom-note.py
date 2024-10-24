@@ -5,6 +5,7 @@
 #
 
 # @lc code=start
+"""
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         if len(ransomNote) > len(magazine):
@@ -24,6 +25,21 @@ class Solution:
                 if letters[char] < 0:
                     return False
             except:
+                return False
+
+        return True"""
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        
+        
+        letters = [0] * 26
+        for char in magazine:
+            letters[ord(char)-97] += 1
+        
+        for char in ransomNote:
+            i = ord(char) - 97
+            letters[i] -= 1
+            if letters[i] < 0:
                 return False
 
         return True
